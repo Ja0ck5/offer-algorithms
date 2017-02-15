@@ -10,5 +10,48 @@ package com.lyj.algorithms.linkedlist;
  * @author Ja0ck5
  */
 public class Solution4 {
+	//构建链表
+	public static class ListNode{
+		int val;
+		ListNode nxt;
+		public ListNode() {}
+		public ListNode(int val) {
+			this.val = val;
+		}
+		@Override
+		public String toString() {
+			return "ListNode [val=" + val + ", nxt=" + nxt + "]";
+		}
+		
+	}
+	
+	public static ListNode findNok(ListNode node,int k){
+		if(null == node || k <= 0)
+			return null;
+		int len = 1;
+		ListNode n = node;
+		//遍历，判断长度
+		while(n.nxt != null ){
+			len++;
+			n = n.nxt;
+		}
+		//k 约束
+		if(k > len) return null;
+		
+		 //倒数第k个节点为顺序的第 len - k个节点
+        n = node;
+        for(int i = 1;i <= len - k;i ++)
+            n = n.nxt;
+        return n;
+	}
+	
+	public static void main(String[] args) {
+        ListNode listNode = new ListNode(1);
+        listNode.nxt = new ListNode(2);
+        listNode.nxt.nxt = new ListNode(3);
+        listNode.nxt.nxt.nxt = new ListNode(4);
+        // 倒数第二个节点
+        System.out.println(findNok(listNode, 2));
+	}
 
 }
