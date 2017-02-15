@@ -37,7 +37,6 @@ public class Solution4 {
 		}
 		//k 约束
 		if(k > len) return null;
-		
 		 //倒数第k个节点为顺序的第 len - k个节点
         n = node;
         for(int i = 1;i <= len - k;i ++)
