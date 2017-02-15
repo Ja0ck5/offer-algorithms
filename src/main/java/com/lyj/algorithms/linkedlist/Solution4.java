@@ -7,7 +7,6 @@ package com.lyj.algorithms.linkedlist;
  * 例如一个有 6 个结点的链表，从头结点依次是 1,2,3,4,5,6 
  * 倒数第三个结点就是值为 4 的结点。
  * @author Ja0ck5
- *
  */
 public class Solution4 {
 
