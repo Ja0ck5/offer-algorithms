@@ -38,6 +38,18 @@ public class Solution2 {
 		
 		return root;
 	}
+
+	//non-recursiveMirrorTree
+	public static BinaryTreeNode nonRecursiveMirrorTree(BinaryTreeNode root){
+		if(null == root)
+			return null;
+		//交换节点的左右子节点
+		BinaryTreeNode tmpNode = root.left;
+		root.left = root.right;
+		root.right = tmpNode;
+		
+		return root;
+	}
 	
 	public static void main(String[] args) {
 		BinaryTreeNode root = new BinaryTreeNode(1);
