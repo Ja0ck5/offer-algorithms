@@ -22,16 +22,20 @@ public class Solution3 {
 		int start = 0;
 		int end = array.length - 1;
 		while (start < end) {
+			//前后逼近
+			//1  如果是奇数，则查找下一个看是否为偶数，是偶数则与后面的奇数调换
 			while (start < end && !isEven(array[start])) {
 				start++;
 			}
+			//2 如果是偶数，则查找下一个奇数，与前面的偶数调换 ------ 对应 //1
 			while (start < end && isEven(array[end])) {
 				end--;
 			}
+			//exchange
 			if (start < end) {
-				int temp = array[start];
-				array[start] = array[end];
-				array[end] = temp;
+				array[start] ^= array[end];
+				array[end] ^= array[start];
+				array[start] ^= array[end];
 			}
 		}
 	}
