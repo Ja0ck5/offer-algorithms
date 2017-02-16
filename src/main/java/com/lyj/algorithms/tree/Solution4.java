@@ -43,7 +43,7 @@ public class Solution4 {
 		if (l >= r)
 			return true;
 		int i = r;
-		// 从后面开始找
+		// 从后面开始找  比根大的节点的位置
 		while (i > l && a[i - 1] > a[r])
 			i--;// 找到比根小的坐标
 		// 从前面开始找 l 到i-1应该比根小
