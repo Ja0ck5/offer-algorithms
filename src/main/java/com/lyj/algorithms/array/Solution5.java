@@ -17,7 +17,7 @@ package com.lyj.algorithms.array;
  */
 public class Solution5 {
 
-	public static void getCustomMinNos(int[] array, int k) {
+/*	public static void getCustomMinNos(int[] array, int k) {
 		if (null == array)
 			return;
 		int cnt = 0;
@@ -31,10 +31,10 @@ public class Solution5 {
 					}
 			}
 		}
-	}
+	}*/
 
 	public static void main(String[] args) {
 		int[] array = new int[] { 4, 5, 1, 6, 2, 7, 3, 8 };
-		Solution5.getCustomMinNos(array, 4);
+//		Solution5.getCustomMinNos(array, 4);
 	}
 }
