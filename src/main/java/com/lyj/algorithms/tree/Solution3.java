@@ -1,7 +1,7 @@
 package com.lyj.algorithms.tree;
 
+import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * 从上往下打印二叉树
@@ -30,7 +30,7 @@ public class Solution3 {
 	public static void printBinaryTreeNode(BinaryTreeNode root){
 		if(null == root)
 			return;
-		Queue<BinaryTreeNode> q = new LinkedBlockingQueue<BinaryTreeNode>();
+		Queue<BinaryTreeNode> q = new LinkedList<BinaryTreeNode>();
 		q.add(root);
 		while(!q.isEmpty()){
 			BinaryTreeNode n = q.poll();
