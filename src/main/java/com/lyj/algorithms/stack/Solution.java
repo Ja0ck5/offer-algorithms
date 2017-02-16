@@ -7,8 +7,9 @@ import java.util.Stack;
  * 
  * 实际是判断是否为栈的合法输出序列
  * 
- * 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是 否为该栈的弹出序列。假设压入栈的所有数字均不相等。例如压栈序列为 1、 2、 3、 4、
- * 5.序列 4、 5、 3、 2、 1 是压栈序列对应的一个弹出序列，但 4、 3、 5、 1、 2 却不是。
+ * 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是 否为该栈的弹出序列。假设压入栈的所有数字均不相等。
+ * 
+ * 例如压栈序列为 1、 2、 3、 4、5.序列 4、 5、 3、 2、 1 是压栈序列对应的一个弹出序列，但 4、 3、 5、 1、 2 却不是。
  * 
  * @author Ja0ck5
  *
@@ -67,7 +68,26 @@ public class Solution {
 			while (!s.empty() && s.peek() == s2[mark]) {
 				// 出栈
 				s.pop();
-				// 弹出序列向后一位
+				// 弹出序列向后移一位
+				mark++;
+			}
+		}
+		return s.empty();
+	}
+	
+	
+	public static boolean isPopOrder3(int[] s1,int[] s2){
+		if(0 == s1.length || 0 == s2.length)
+			return false;
+		Stack<Integer> s = new Stack<Integer>();
+		int mark = 0;
+		for (int i = 0; i < s1.length; i++) {
+			//将 s1 入栈序列 顺序入栈
+			s.push(s1[i]);
+			while(!s.empty() && s.peek() == s2[mark]){
+				//出栈
+				s.pop();
+				//标记往后移动一位
 				mark++;
 			}
 		}
