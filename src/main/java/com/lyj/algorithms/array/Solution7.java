@@ -63,22 +63,19 @@ public class Solution7 {
 	}
 
 	public void printMinNo(int[] numbers) {
-		int n;
-		String s = "";
+		if (null == numbers)
+			return;
 		List<Integer> list = new ArrayList<Integer>();
-		n = numbers.length;
-		for (int i = 0; i < n; i++)
+		for (int i = 0; i < numbers.length; i++)
 			list.add(numbers[i]);
 
 		Collections.sort(list, new Comparator<Integer>() {
-
 			public int compare(Integer str1, Integer str2) {
-				String s1 = str1 + "" + str2;
-				String s2 = str2 + "" + str1;
-				return s1.compareTo(s2);
+				return (str1 + "" + str2).compareTo(str2 + "" + str1);
 			}
 		});
 
+		String s = "";
 		for (int j : list)
 			s += j;
 		System.out.println(s);
