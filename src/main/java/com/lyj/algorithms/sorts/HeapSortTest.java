@@ -10,9 +10,8 @@ public class HeapSortTest {
     }  
   
     public static void swap(int[] data, int i, int j) {  
-        if (i == j) {  
+        if (i == j)
             return;  
-        } 
         //1 ½»»»    
 //        data[i] = data[i] + data[j];  
 //        data[j] = data[i] - data[j];  
