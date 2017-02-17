@@ -38,7 +38,8 @@ public class HeapSortTest {
             int k = i;  
             // 若当前节点的子节点存在  
             while (2 * k + 1 <= lastIndex) {  
-                // biggerIndex总是记录较大节点的值,先赋值为当前判断节点的左子节点  
+               
+            	// biggerIndex总是记录较大节点的值,先赋值为当前判断节点的左子节点  
                 int biggerIndex = 2 * k + 1;  
                 if (biggerIndex < lastIndex) {  
                     // 比较左右子节点  
@@ -46,6 +47,7 @@ public class HeapSortTest {
                         // 若右子节点值比左子节点值大，则biggerIndex记录的是右子节点的值  
                         biggerIndex++;  
                 } 
+                
                 //最大的子节点与当前节点比较
                 if (data[k] < data[biggerIndex]) {  
                     // 若当前节点值比子节点最大值小，则交换2者得值
@@ -54,7 +56,8 @@ public class HeapSortTest {
                     k = biggerIndex;  
                 } else {  
                     break;  
-                }  
+                }
+                
             }  
         }  
     }  
