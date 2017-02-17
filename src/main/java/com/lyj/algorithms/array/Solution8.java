@@ -37,8 +37,9 @@ public class Solution8 {
 		int right = mergeSort(result, array, start + len + 1, end);
 		int lIdx = start + len;
 		int rIdx = end;
-		int cnt = 0;
 		int p = rIdx;
+		// 记录相邻子数组间逆序数
+		int cnt = 0;
 		
 		while (lIdx >= start && rIdx >= start + len + 1) {
 			if (array[lIdx] > array[rIdx]) {
