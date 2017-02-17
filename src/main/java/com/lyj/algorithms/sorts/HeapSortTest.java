@@ -24,7 +24,9 @@ public class HeapSortTest {
   
     public static void heapSort(int[] data) {  
         for (int i = 0; i < data.length; i++) {  
+        	//构建大顶堆,比较后的最大值不用再次构建大顶堆。只根据余下的数值进行构建大顶堆
             createMaxdHeap(data, data.length - 1 - i);  
+            //将最大值与最后一个交换
             swap(data, 0, data.length - 1 - i);  
             print(data);  
         }  
@@ -39,15 +41,16 @@ public class HeapSortTest {
                 // biggerIndex总是记录较大节点的值,先赋值为当前判断节点的左子节点  
                 int biggerIndex = 2 * k + 1;  
                 if (biggerIndex < lastIndex) {  
-                    // 若右子节点存在，否则此时biggerIndex应该等于 lastIndex  
-                    if (data[biggerIndex] < data[biggerIndex + 1]) {  
+                    // 比较左右子节点  
+                    if (data[biggerIndex] < data[biggerIndex + 1])  
                         // 若右子节点值比左子节点值大，则biggerIndex记录的是右子节点的值  
                         biggerIndex++;  
-                    }  
-                }  
+                } 
+                //最大的子节点与当前节点比较
                 if (data[k] < data[biggerIndex]) {  
-                    // 若当前节点值比子节点最大值小，则交换2者得值，交换后将biggerIndex值赋值给k  
+                    // 若当前节点值比子节点最大值小，则交换2者得值
                     swap(data, k, biggerIndex);  
+                    //交换后将biggerIndex值赋值给k,即交换后 2k+1 位置为其左子节点  
                     k = biggerIndex;  
                 } else {  
                     break;  
