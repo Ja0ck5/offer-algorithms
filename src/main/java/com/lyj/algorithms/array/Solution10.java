@@ -39,7 +39,7 @@ public class Solution10 {
 
 	private int findFirstBitIs1(int n) {
 		int idxBit = 0;
-		while ((n & 1) == 0) {
+		while ((n & 1) == 0) {// 找到异或结果中，从右到左第一个不为0 的位，用于数组划分
 			n = n >> 1;
 			++idxBit;
 		}
