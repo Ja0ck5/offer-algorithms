@@ -18,34 +18,37 @@ public class Solution10 {
 	public void findNumsAppearOnce(int[] array) {
 		if (array == null)
 			return;
-		int number = 0;
+		int n = 0;
+		
 		for (int i : array)
-			number ^= i;
-		int index = findFirstBitIs1(number);
-		int number1 = 0;
-		int number2 = 0;
+			n ^= i;
+		
+		int idx = findFirstBitIs1(n);
+		
+		int n1 = 0;
+		int n2 = 0;
 		for (int i : array) {
-			if (isBit1(i, index))
-				number1 ^= i;
+			if (isBit1(i, idx))
+				n1 ^= i;
 			else
-				number2 ^= i;
+				n2 ^= i;
 		}
-		System.out.println(number1);
-		System.out.println(number2);
+		System.out.println(n1);
+		System.out.println(n2);
 	}
 
-	private int findFirstBitIs1(int number) {
-		int indexBit = 0;
-		while ((number & 1) == 0) {
-			number = number >> 1;
-			++indexBit;
+	private int findFirstBitIs1(int n) {
+		int idxBit = 0;
+		while ((n & 1) == 0) {
+			n = n >> 1;
+			++idxBit;
 		}
-		return indexBit;
+		return idxBit;
 	}
 
-	private boolean isBit1(int number, int index) {
-		number = number >> index;
-		return (number & 1) == 0;
+	private boolean isBit1(int n, int idx) {
+		n = n >> idx;
+		return (n & 1) == 0;
 	}
 
 }
