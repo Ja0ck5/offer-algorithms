@@ -9,27 +9,27 @@ public class RadixSortSolution {
 		System.out.println("排序后的数组：" + Arrays.toString(array));
 	}
 
-	public static void radixSort(int[] number, int d) // d表示最大的数有多少位
+	public static void radixSort(int[] a, int d) // d表示最大的数有多少位
 	{
 		int k = 0;
 		int n = 1;
 		int m = 1; // 控制键值排序依据在哪一位
 		int radix = 10;
-		int[][] bucket = new int[10][number.length]; // 数组的第一维表示可能的余数0-9
+		int[][] bucket = new int[10][a.length]; // 数组的第一维表示可能的余数0-9
 		int[] order = new int[10]; // 数组order[i]用来表示该位是i的数的个数
 		while (m <= d) {
 			
-			for (int i = 0; i < number.length; i++) {
+			for (int i = 0; i < a.length; i++) {
 				//Least Significant Digit first
-				int lsd = ((number[i] / n) % radix);
-				bucket[lsd][order[lsd]] = number[i];
+				int lsd = ((a[i] / n) % radix);
+				bucket[lsd][order[lsd]] = a[i];
 				order[lsd]++;
 			}
 			
 			for (int i = 0; i < radix; i++) {
 				if (order[i] != 0)
 					for (int j = 0; j < order[i]; j++) {
-						number[k] = bucket[i][j];
+						a[k] = bucket[i][j];
 						k++;
 					}
 				order[i] = 0;
