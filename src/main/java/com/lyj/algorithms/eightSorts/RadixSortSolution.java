@@ -16,27 +16,30 @@ public class RadixSortSolution {
 		int m = 1; // 控制键值排序依据在哪一位
 		int radix = 10;
 		int[][] bucket = new int[10][a.length]; // 数组的第一维表示可能的余数0-9
-		int[] order = new int[10]; // 数组order[i]用来表示该位是i的数的个数
+		/**
+		 * 表示桶的每一行也就是每一位存放的个数
+		 */
+		int[] order = new int[10]; 
 		while (m <= d) {
-			
+
 			for (int i = 0; i < a.length; i++) {
-				//Least Significant Digit first
+				// Least Significant Digit first
 				int lsd = ((a[i] / n) % radix);
 				bucket[lsd][order[lsd]] = a[i];
 				order[lsd]++;
 			}
-			
+			//将桶中的数值保存会原来的数组中
 			for (int i = 0; i < radix; i++) {
 				if (order[i] != 0)
 					for (int j = 0; j < order[i]; j++) {
 						a[k] = bucket[i][j];
 						k++;
 					}
-				order[i] = 0;
+				order[i] = 0;//拷贝完成清除记录的个数，设为0
 			}
-			
+
 			n *= radix;
-			k = 0;
+			k = 0; //k值记录拷贝数据到原有数组中的位置，拷贝完成恢复0
 			m++;
 		}
 	}
