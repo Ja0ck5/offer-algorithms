@@ -28,7 +28,7 @@ public class RadixSortSolution {
 				bucket[lsd][order[lsd]] = a[i];
 				order[lsd]++;
 			}
-			//将桶中的数值保存会原来的数组中
+			//将桶中的数值保存至原来的数组中
 			for (int i = 0; i < radix; i++) {
 				if (order[i] != 0)
 					for (int j = 0; j < order[i]; j++) {
