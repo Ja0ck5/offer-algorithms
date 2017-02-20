@@ -1,50 +1,43 @@
 package com.lyj.algorithms.eightSorts;
 
+import java.util.Arrays;
+
 public class RadixSortSolution {
-	public void radixSort(int[] a, int begin, int end, int digit) {
-		// 基数
-		final int radix = 10;
-		// 桶中的数据统计
-		int[] count = new int[radix];
-		int[] bucket = new int[end-begin+1];
-		
-		// 按照从低位到高位的顺序执行排序过程
-		for (int i = 1; i <= digit; i++) {
-			// 清空桶中的数据统计
-			for (int j = 0; j < radix; j++)
-				count[j] = 0;
-			
-			// 统计各个桶将要装入的数据个数
-			for (int j = begin; j <= end; j++) {
-				int index = getDigit(a[j], i);
-				count[index]++;
-			}
-			
-			// count[i]表示第i个桶的右边界索引
-			for (int j = 1; j < radix; j++)
-				count[j] = count[j] + count[j - 1]; 
-			
-			// 将数据依次装入桶中
-            // 这里要从右向左扫描，保证排序稳定性 
-			for (int j = end; j >= begin; j--) {
-				int index = getDigit(a[j], i);
-				bucket[count[index] - 1] = a[j];
-				count[index]--;
-			}
-			
-			// 取出，此时已是对应当前位数有序的表
-			for (int j = 0; j < bucket.length; j++)
-				a[j] = bucket[j];
-		}
+	public static void main(String[] args) {
+		int[] array = new int[] { 1200, 292, 121, 72, 233, 44, 12 };
+		radixSort(array, 4);
+		System.out.println("排序后的数组：" + Arrays.toString(array));
 	}
-	
-	// 获取x的第d位的数字，其中最低位d=1
-	private int getDigit(int x, int d) {
-		String div = "1";
-		while (d >= 2) {
-			div += "0";
-			d--;
+
+	public static void radixSort(int[] number, int d) // d表示最大的数有多少位
+	{
+		int k = 0;
+		int n = 1;
+		int m = 1; // 控制键值排序依据在哪一位
+		int radix = 10;
+		int[][] bucket = new int[10][number.length]; // 数组的第一维表示可能的余数0-9
+		int[] order = new int[10]; // 数组order[i]用来表示该位是i的数的个数
+		while (m <= d) {
+			
+			for (int i = 0; i < number.length; i++) {
+				//Least Significant Digit first
+				int lsd = ((number[i] / n) % radix);
+				bucket[lsd][order[lsd]] = number[i];
+				order[lsd]++;
+			}
+			
+			for (int i = 0; i < radix; i++) {
+				if (order[i] != 0)
+					for (int j = 0; j < order[i]; j++) {
+						number[k] = bucket[i][j];
+						k++;
+					}
+				order[i] = 0;
+			}
+			
+			n *= radix;
+			k = 0;
+			m++;
 		}
-		return x/Integer.parseInt(div) % 10;
 	}
 }
