@@ -47,6 +47,20 @@ public class Solution6 {
 		return mergement;
 	}
 
+	public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+		if (l1 == null)
+			return l2;
+		if (l2 == null)
+			return l1;
+		if (l1.val < l2.val) {
+			l1.nxt = mergeTwoLists(l1.nxt, l2);
+			return l1;
+		} else {
+			l2.nxt = mergeTwoLists(l1, l2.nxt);
+			return l2;
+		}
+	}
+
 	public static ListNode mergeListNode2(ListNode ln1, ListNode ln2) {
 		if (null == ln1)
 			return ln2;
@@ -91,8 +105,10 @@ public class Solution6 {
 		ListNode ln2 = new ListNode(2);
 		ln2.nxt = new ListNode(4);
 		ln2.nxt.nxt = new ListNode(6);
+		
+		System.out.println(mergeTwoLists(ln1, ln2));
 
-		System.out.println(mergeListNode(ln1, ln2));
+//		System.out.println(mergeListNode(ln1, ln2));
 
 	}
 
