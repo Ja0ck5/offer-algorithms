@@ -34,15 +34,20 @@ public class Fibonacci {
 	    if (0 == n) return 0;
 	    if (1 == n) return 1;
 
-	    if (2 < n) {
+	    if (n > 2) {
 	        int[] arr = new int[n + 1];
 	        arr[0] = 0;
 	        arr[1] = 1;
-	        for (int i = 2; i < arr.length; i++) {
+	        for (int i = 2; i < arr.length; i++)
 	            arr[i] = arr[i - 1] + arr[i - 2];
-	        }
 	        return arr[n];
 	    }
 	    return n;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(fibonacci(30));
+		System.out.println(fibonacci1(30));
+		System.out.println(fibonacci2(30));
 	}
 }
