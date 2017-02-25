@@ -44,7 +44,7 @@ public class StackS<T> {
     }  
       
     public static void main(String[] args) {  
-        StackS<Integer> stack = new StackS<Integer>(3);  
+        StackS<Integer> stack = new StackS<Integer>(4);  
         for (int i = 0; i < 5; i++) {  
             stack.push(i);  
             System.out.println("push size:" + stack.size());  
