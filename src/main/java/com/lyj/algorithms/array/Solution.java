@@ -3,28 +3,23 @@ package com.lyj.algorithms.array;
 /**
  * 一个二维数组，每一行从左到右递增，每一列从上到下递增
  * 
- * 输入一个二维数组和一个整数，判断数组中是否含有整数
+ * 输入一个二维数组和一个整数，判断数组中是否含有该整数
  * 
  * @author Ja0ck5
  *
  */
 public class Solution {
 	public static boolean find2Dimesion(int[][] array, int number) {
-		// 1 合理判断
-		if (null == array || 0 == array.length)
+		if (null == array || 0 == array.length)// 1 合理判断
 			return false;
-		//2 行数
-		int i = array.length - 1;
-		//3 列数
-		int j = 0;
+		int i = array.length - 1;//2 行数
+		int j = 0;//3 列数
 		while ((i >= 0) && (j < array[0].length)) {
 			if (number == array[i][j])
 				return true;
-			//4 大于目标 number 则 行 减小
-			else if (number < array[i][j])
+			else if (number < array[i][j])//4 大于目标 number 则 行 减小
 				i--;
-			//5 小于目标数列增加
-			else
+			else//5 小于目标数列增加
 				j++;
 		}
 		return false;
@@ -48,6 +43,6 @@ public class Solution {
 		a[3][1]=8;
 		a[3][2]=11;
 		a[3][3]=15;
-		System.out.println(find2Dimesion(a, 13));
+		System.out.println(find2Dimesion(a, 1));
 	}
 }
