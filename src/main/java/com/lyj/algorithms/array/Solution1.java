@@ -26,16 +26,12 @@ public class Solution1 {
 			}
 			mid = (p1 + p2) / 2;
 			// 如果中间位置的数既等于p1位置的数又等于P2位置的数
-			if (array[p1] == array[mid] && array[p2] == array[mid]) {
+			if (array[p1] == array[mid] && array[p2] == array[mid])
 				min = minInorder(array, p1, p2);
-			}
 			if (array[p1] <= array[mid])// 若中间位置的数位于数组1，让p1走到mid的位置
-			{
 				p1 = mid;
-			} else if (array[p2] >= array[mid])// 若中间位置的数位于数组2，让p2走到mid的位置
-			{
+			 else if (array[p2] >= array[mid])// 若中间位置的数位于数组2，让p2走到mid的位置
 				p2 = mid;
-			}
 		}
 		return min;
 	}
